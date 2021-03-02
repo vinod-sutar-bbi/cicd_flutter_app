@@ -9,6 +9,8 @@ xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -sdk iphoneos build-for-testing
 
+ls
+
 cd build/Build/Products 
 
 zip -r MyTests.zip Debug-iphoneos  Runner_iphoneos14.2-arm64.xctestrun
