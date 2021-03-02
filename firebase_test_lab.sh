@@ -1,5 +1,3 @@
-gcloud info
-
 flutter clean
 
 flutter build ios --no-codesign
