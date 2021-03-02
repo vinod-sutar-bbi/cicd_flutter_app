@@ -5,9 +5,9 @@ on:
       - master
 
 jobs:
-
   install_flutter:
     name: Install flutter
+    runs-on: macos-latest
       - uses: steebchen/flutter@v1.1.0
       - run: flutter pub get
 
