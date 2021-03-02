@@ -35,14 +35,14 @@ jobs:
       - name: Use gcloud CLI
         run: gcloud info
 
-  # firebase_test_lab:
-  #   # needs: [flutter_test]
-  #   name: Run tests on Firebase Test Lab
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: asadmansr/Firebase-Test-Lab-Action@v1.0
-  #       with:
-  #         arg-spec: 'tests.yml:android-pixel-4'
-  #       env:
-  #         SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+  firebase_test_lab:
+    needs: [set_up_gcloud_sdk]
+    name: Run tests on Firebase Test Lab
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: asadmansr/Firebase-Test-Lab-Action@v1.0
+        with:
+          arg-spec: 'tests.yml:android-pixel-4'
+        env:
+          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
