@@ -31,7 +31,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-        uses: asadmansr/Firebase-Test-Lab-Action@v1.0
+      - uses: asadmansr/Firebase-Test-Lab-Action@v1.0
         with:
           arg-spec: 'tests.yml:android-pixel-4'
         env:
