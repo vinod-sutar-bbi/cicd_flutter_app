@@ -18,3 +18,4 @@ jobs:
       - run: flutter pub global activate dart_code_metrics
       - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
       - run: flutter test --coverage
+      - run: genhtml coverage/lcov.info -o coverage/html
