@@ -15,13 +15,11 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: brew install lcov
-      - run: flutter analyze lib
-      - run: flutter test
-      - run: flutter pub global activate dart_code_metrics
-      - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
-      # - run: flutter test --coverage
-      # - run: genhtml coverage/lcov.info -o coverage/html
-      - run: bash test_coverage.sh
+      # - run: flutter analyze lib
+      # - run: flutter test
+      # - run: flutter pub global activate dart_code_metrics
+      # - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
+      # - run: bash test_coverage.sh
       - run: flutter build ios --no-codesign 
       
       
