@@ -27,14 +27,14 @@ void main() {
     expect(counter.value, -2);
   });
 
-  test('Counter value should be increment twice', () {
+  test('Counter value should be incremented twice', () {
 
     final counter = NewsPage();
 
     counter.increment();
     counter.increment();
 
-    expect(counter.value, 1);
+    expect(counter.value, 2);
   });
 }
 
