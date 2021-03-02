@@ -24,8 +24,9 @@ jobs:
       - run: bash test_coverage.sh
       
   firebase_test_lab:
+    needs: [flutter_test]
     name: Run tests on Firebase Test Lab
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
