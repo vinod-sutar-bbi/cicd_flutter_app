@@ -34,7 +34,7 @@ void main() {
     counter.increment();
     counter.increment();
 
-    expect(counter.value, 2);
+    expect(counter.value, 1);
   });
 }
 
