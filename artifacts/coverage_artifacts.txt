@@ -1,0 +1,12 @@
+Reading data file coverage/lcov.info
+Resolved relative source file path "lib/main.dart" with CWD to "/Users/admin/Desktop/cicd/app/cicd_flutter_app/lib/main.dart".
+Found 2 entries.
+Found common filename prefix "/Users/admin/Desktop/cicd/app/cicd_flutter_app"
+Writing .css and .png files.
+Generating output.
+Processing file lib/main.dart
+Processing file lib/news/page/news_page.dart
+Writing directory view page.
+Overall coverage rate:
+  lines......: 90.3% (28 of 31 lines)
+  functions..: no data found

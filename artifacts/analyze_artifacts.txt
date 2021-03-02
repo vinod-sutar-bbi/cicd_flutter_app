@@ -1,0 +1,4 @@
+Analyzing cicd_flutter_app...                                   
+
+   info • Unused import: 'dart:io' • lib/main.dart:1:8 • unused_import
+

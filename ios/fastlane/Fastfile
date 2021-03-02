@@ -1,0 +1,46 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :beta do
+
+    sh('cd .. && cd .. && bash test_coverage.sh')
+    
+    # get_certificates           # invokes cert
+    # get_provisioning_profile 
+    # scan(
+    #   scheme: 'Runner',                  # XCTest scheme
+    #   clean: true,                        # Recommended: This would ensure the build would not include unnecessary files
+    #   skip_detect_devices: true,          # Required
+    #   build_for_testing: true,            # Required
+    #   sdk: 'iphoneos',                    # Required
+    #   should_zip_build_products: true     # Must be true to set the correct format for Firebase Test Lab
+    # )
+    # firebase_test_lab_ios_xctest(
+    #   gcp_project: 'dgk-pocket-leitlinien', # Your Google Cloud project name
+    #   devices: [                          # Device(s) to run tests on
+    #     {
+    #       ios_model_id: 'iphonex',        # Device model ID, see gcloud command above
+    #       ios_version_id: '11.4',         # iOS version ID, see gcloud command above
+    #       locale: 'en_US',                # Optional: default to en_US if not set
+    #       orientation: 'portrait'         # Optional: default to portrait if not set
+    #     }
+    #   ]
+    # )
+  end
+end

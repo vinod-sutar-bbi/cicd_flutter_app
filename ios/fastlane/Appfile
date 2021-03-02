@@ -1,0 +1,9 @@
+app_identifier("DGKPOCKET.Dyslipidaemias") # The bundle identifier of your app
+apple_id("developer.boermbruckmeier@gmail.com") # Your Apple email address
+
+team_name "Boerm Bruckmeier Verlag GmbH"
+team_id "2N4SRE46PG"
+
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
