@@ -37,7 +37,7 @@ jobs:
   #       run: gcloud info
 
   firebase_test_lab:
-    needs: [set_up_gcloud_sdk]
+    # needs: [set_up_gcloud_sdk]
     name: Run tests on Firebase test lab
     runs-on: macos-latest
     steps:
