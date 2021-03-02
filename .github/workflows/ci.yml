@@ -24,6 +24,7 @@ jobs:
       
       
   set_up_gcloud_sdk:
+    needs: [flutter_test]
     name: Set up Cloud SDK
     runs-on: macos-latest
     steps:
