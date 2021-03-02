@@ -16,7 +16,7 @@ jobs:
       - run: flutter pub get
       - run: brew install lcov
       - run: flutter analyze lib
-      - run: flutter test lib
+      - run: flutter test
       - run: flutter pub global activate dart_code_metrics
       - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
       # - run: flutter test --coverage
