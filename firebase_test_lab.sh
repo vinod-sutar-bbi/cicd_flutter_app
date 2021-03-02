@@ -13,4 +13,4 @@ ls
 
 cd build/Build/Products 
 
-zip -r MyTests.zip Debug-iphoneos  Runner_iphoneos14.2-arm64.xctestrun
+zip -r MyTests.zip Debug-iphoneos  Runner_iphoneos14.4-arm64.xctestrun
