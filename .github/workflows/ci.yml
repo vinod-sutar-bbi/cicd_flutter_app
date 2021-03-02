@@ -23,7 +23,7 @@ jobs:
       # - run: genhtml coverage/lcov.info -o coverage/html
       - run: bash test_coverage.sh
       
-  flutter_test:
+  firebase_test_lab:
     name: Run tests on Firebase Test Lab
     runs-on: macos-latest
     steps:
