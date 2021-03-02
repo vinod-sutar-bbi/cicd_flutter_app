@@ -5,26 +5,26 @@ on:
       - master
 
 jobs:
-  flutter_test:
-    name: Run flutter test and analyze
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable"
-      - run: flutter pub get
-      - run: brew install lcov
-      - run: flutter analyze lib
-      - run: flutter test
-      - run: flutter pub global activate dart_code_metrics
-      - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
-      - run: bash test_coverage.sh
+  # flutter_test:
+  #   name: Run flutter test and analyze
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: "stable"
+  #     - run: flutter pub get
+  #     - run: brew install lcov
+  #     - run: flutter analyze lib
+  #     - run: flutter test
+  #     - run: flutter pub global activate dart_code_metrics
+  #     - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
+  #     - run: bash test_coverage.sh
 
       
       
   set_up_gcloud_sdk:
-    needs: [flutter_test]
+  #   needs: [flutter_test]
     name: Set up Cloud SDK
     runs-on: macos-latest
     steps:
@@ -34,4 +34,4 @@ jobs:
           service_account_key: ${{ secrets.SERVICE_ACCOUNT }}
           export_default_credentials: true
       - name: Use gcloud CLI
-        run: bash build.sh
+        run: bash firebase_test_lab.sh
