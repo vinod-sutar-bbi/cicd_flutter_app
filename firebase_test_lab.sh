@@ -1,6 +1,4 @@
-flutter clean
 
-flutter build ios integration_test/custom_integration_test.dart --no-codesign
 
 cd ios
 
@@ -10,6 +8,14 @@ security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -
 
 uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
 cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
+
+cd ..
+
+flutter clean
+
+flutter build ios integration_test/custom_integration_test.dart --no-codesign
+
+cd ios
 
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
