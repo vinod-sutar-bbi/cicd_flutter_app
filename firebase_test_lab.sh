@@ -4,14 +4,19 @@ flutter build ios integration_test/custom_integration_test.dart
 
 cd ios
 
+security create-keychain -p password bobbins.keychain
+security unlock-keychain -p password bobbins.keychain
+security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
+
+uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
+cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
+
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
--sdk iphoneos build-for-testing 
-CODE_SIGN_IDENTITY="" \
-CODE_SIGNING_REQUIRED="NO" \
-CODE_SIGN_ENTITLEMENTS="" \
-CODE_SIGNING_ALLOWED="NO"
+-sdk iphoneos build-for-testing \
+-PROVISIONING_PROFILE= $uuid \
+CODE_SIGN_IDENTITY="Apple Development: BB Developer (QXZZ2XV3GC)" 
 
 # xcodebuild test-without-building \
 # -xctestrun "build/Build/Products/Runner_iphoneos14.2-arm64-armv7.xctestrun" \
