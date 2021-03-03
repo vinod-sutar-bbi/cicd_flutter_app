@@ -8,7 +8,6 @@ xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
 -sdk iphoneos build-for-testing 
--allowProvisioningUpdate
 CODE_SIGN_IDENTITY="" \
 CODE_SIGNING_REQUIRED="NO" \
 CODE_SIGN_ENTITLEMENTS="" \
