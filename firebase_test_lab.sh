@@ -9,6 +9,10 @@ xcodebuild -workspace Runner.xcworkspace \
 -scheme Runner \
 -sdk iphoneos build-for-testing 
 -allowProvisioningUpdate
+CODE_SIGN_IDENTITY="" \
+CODE_SIGNING_REQUIRED="NO" \
+CODE_SIGN_ENTITLEMENTS="" \
+CODE_SIGNING_ALLOWED="NO"
 
 # xcodebuild test-without-building \
 # -xctestrun "build/Build/Products/Runner_iphoneos14.2-arm64-armv7.xctestrun" \
