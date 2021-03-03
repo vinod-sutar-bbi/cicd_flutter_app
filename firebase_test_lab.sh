@@ -1,6 +1,6 @@
 flutter clean
 
-flutter build ios integration_test/custom_integration_test.dart
+flutter build ios integration_test/custom_integration_test.dart --no-codesign
 
 cd ios
 
@@ -14,19 +14,17 @@ cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mob
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
--sdk iphoneos build-for-testing \
--PROVISIONING_PROFILE= $uuid \
-CODE_SIGN_IDENTITY="Apple Development: BB Developer (QXZZ2XV3GC)" 
+-sdk iphoneos build-for-testing 
 
 # xcodebuild test-without-building \
 # -xctestrun "build/Build/Products/Runner_iphoneos14.2-arm64-armv7.xctestrun" \
 # -destination id=5622a27c468b794d50e92c617e0682a9e4cd5804
 
-cd build/Build/Products 
+# cd build/Build/Products 
 
-zip -r MyTests.zip Debug-iphoneos  Runner_iphoneos14.4-arm64-armv7.xctestrun
+# zip -r MyTests.zip Debug-iphoneos  Runner_iphoneos14.4-arm64-armv7.xctestrun
 
-gcloud firebase test ios run --test MyTests.zip \
- --device model=iphonex,version=11.4,locale=en_US,orientation=portrait
+# gcloud firebase test ios run --test MyTests.zip \
+#  --device model=iphonex,version=11.4,locale=en_US,orientation=portrait
 
-rm -r build
+# rm -r build
