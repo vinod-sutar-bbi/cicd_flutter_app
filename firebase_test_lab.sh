@@ -12,10 +12,10 @@ uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
 cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
 
 xcodebuild -workspace Runner.xcworkspace \
--allowProvisioningUpdates
+-allowProvisioningUpdates \
 -derivedDataPath build \
 -scheme Runner \
--sdk iphoneos build-for-testing \
+-sdk iphoneos build-for-testing
 
 
 # xcodebuild test-without-building \
