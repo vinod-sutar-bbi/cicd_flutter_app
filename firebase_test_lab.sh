@@ -12,6 +12,7 @@ xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
 -sdk iphoneos build-for-testing 
+-allowProvisioningUpdate
 
 # xcodebuild test-without-building \
 # -xctestrun "build/Build/Products/Runner_iphoneos14.2-arm64-armv7.xctestrun" \
