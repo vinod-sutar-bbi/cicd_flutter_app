@@ -4,9 +4,7 @@ cd ios
 
 # ls
 
-security create-keychain -p password bobbins.keychain
-security unlock-keychain -p password bobbins.keychain
-security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
+security import apple_developement_certificate.p12 -P bbii -A
 
 mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
 
@@ -31,11 +29,11 @@ xcodebuild -workspace Runner.xcworkspace \
 # -xctestrun "build/Build/Products/Runner_iphoneos14.2-arm64-armv7.xctestrun" \
 # -destination id=5622a27c468b794d50e92c617e0682a9e4cd5804
 
-cd build/Build/Products 
+# cd build/Build/Products 
 
-zip -r MyTests.zip Debug-iphoneos  Runner_iphoneos14.4-arm64-armv7.xctestrun
+# zip -r MyTests.zip Debug-iphoneos  Runner_iphoneos14.4-arm64-armv7.xctestrun
 
-gcloud firebase test ios run --test MyTests.zip \
- --device model=iphonex,version=11.4,locale=en_US,orientation=portrait
+# gcloud firebase test ios run --test MyTests.zip \
+#  --device model=iphonex,version=11.4,locale=en_US,orientation=portrait
 
-rm -r build
+# rm -r build
