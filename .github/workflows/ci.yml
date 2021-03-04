@@ -46,4 +46,6 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - run: bash firebase_test_lab.sh
+      - run: bash ci_import_cert_profile.sh
+      - run: bash ci_flutter_build.sh
+      - run: bash ci_firebase_test_lab.sh
