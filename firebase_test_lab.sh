@@ -1,15 +1,15 @@
 
 
-cd ios
+# cd ios
 
-security create-keychain -p password bobbins.keychain
-security unlock-keychain -p password bobbins.keychain
-security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
+# security create-keychain -p password bobbins.keychain
+# security unlock-keychain -p password bobbins.keychain
+# security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
 
-uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
-cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
+# uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
+# cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
 
-cd ..
+# cd ..
 
 flutter clean
 
