@@ -2,25 +2,27 @@
 
 cd ios
 
-security create-keychain -p password bobbins.keychain
-security unlock-keychain -p password bobbins.keychain
-security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
+ls
+
+# security create-keychain -p password bobbins.keychain
+# security unlock-keychain -p password bobbins.keychain
+# security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
 
 uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
 cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
 
-cd ..
+# cd ..
 
-flutter clean
+# flutter clean
 
-flutter build ios integration_test/custom_integration_test.dart --no-codesign
+# flutter build ios integration_test/custom_integration_test.dart --no-codesign
 
-cd ios
+# cd ios
 
-xcodebuild -workspace Runner.xcworkspace \
--derivedDataPath build \
--scheme Runner \
--sdk iphoneos build-for-testing
+# xcodebuild -workspace Runner.xcworkspace \
+# -derivedDataPath build \
+# -scheme Runner \
+# -sdk iphoneos build-for-testing
 
 
 # xcodebuild test-without-building \
