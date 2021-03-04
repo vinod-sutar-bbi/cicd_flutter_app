@@ -8,9 +8,11 @@ ls
 # security unlock-keychain -p password bobbins.keychain
 # security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
 
-uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
-cp adhoc.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/$uuid.mobileprovision
-
+for PROVISION in `ls ./*.mobileprovision`
+do
+  UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./$PROVISION)`
+  cp "./$PROVISION" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
+done
 # cd ..
 
 # flutter clean
