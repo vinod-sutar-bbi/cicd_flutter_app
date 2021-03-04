@@ -8,6 +8,8 @@ ls
 # security unlock-keychain -p password bobbins.keychain
 # security import apple_developement_certificate.p12 -k bobbins.keychain -P bbii -A
 
+mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+
 uuid=`grep UUID -A1 -a adhoc.mobileprovision | grep -io "[-A-F0-9]\{36\}"`
 cp "adhoc.mobileprovision" "$HOME/Library/MobileDevice/Provisioning Profiles/$uuid.mobileprovision"
 
