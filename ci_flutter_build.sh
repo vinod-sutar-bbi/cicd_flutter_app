@@ -1,6 +1,6 @@
 flutter clean
 
-flutter build ios integration_test/custom_integration_test.dart
+flutter build ios integration_test/custom_integration_test.dart --no-codesign
 
 cd ios
 
