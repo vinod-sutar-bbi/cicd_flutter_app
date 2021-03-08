@@ -1,5 +1,7 @@
 cd ios
 
+security add-certificates AppleWWDRCAG3.cer
+
 security import apple_developement_certificate.p12 -P bbii -A
 
 mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
