@@ -2,7 +2,7 @@ cd ios
 
 security add-certificates AppleWWDRCAG3.cer
 
-security import apple_developement_certificate.p12 -P bbii -T /usr/bin/codesign
+security import apple_developement_certificate.p12 -P bbii -T /usr/bin/codesign -A
 
 mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
 
