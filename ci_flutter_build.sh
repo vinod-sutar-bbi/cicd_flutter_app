@@ -2,9 +2,9 @@ flutter clean
 
 flutter build ios integration_test/custom_integration_test.dart --debug 
 
-cd ios
+# cd ios
 
-xcodebuild -workspace Runner.xcworkspace \
--derivedDataPath build \
--scheme Runner \
--sdk iphoneos build-for-testing
+# xcodebuild -workspace Runner.xcworkspace \
+# -derivedDataPath build \
+# -scheme Runner \
+# -sdk iphoneos build-for-testing
