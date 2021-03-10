@@ -61,8 +61,9 @@ jobs:
       - name: Select latest Xcode
         run: "sudo xcode-select -s /Applications/Xcode_$XC_VERSION.app"
       - uses: actions/checkout@v2
-      - name: Run Unit and UI Tests
+      - name: Change Directory
         run: cd ios
+      - name: Run Unit and UI Tests
         run: /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
 
 
