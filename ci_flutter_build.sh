@@ -6,7 +6,11 @@ rm ios/Podfile.lock
 
 flutter pub get
 
-flutter build ios --no-pub integration_test/custom_integration_test.dart
+cd ios
+
+pod install --verbose
+
+# flutter build ios --no-pub integration_test/custom_integration_test.dart
 
 # cd ios
 
