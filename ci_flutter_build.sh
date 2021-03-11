@@ -4,6 +4,8 @@
 
 flutter pub get
 
+pod install
+
 cd ios
 
 xcodebuild -workspace Runner.xcworkspace \
