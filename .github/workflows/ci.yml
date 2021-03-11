@@ -65,7 +65,7 @@ jobs:
       #   run: bash ci_flutter_build.sh
       - uses: sersoft-gmbh/xcodebuild-action@v1
         with:
-          workspace: Runner.xcodeproj
+          workspace: Runner.xcworkspace
           scheme: Runner
           sdk: iphoneos
           action: build-for-testing
