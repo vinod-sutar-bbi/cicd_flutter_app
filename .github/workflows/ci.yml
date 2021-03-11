@@ -65,6 +65,8 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
+      - name: Install Certs and Profiles
+        run: bash ci_import_cert_profile.sh
       - name: Compile app
         run: flutter build ios integration_test/custom_integration_test.dart
 
