@@ -2,7 +2,9 @@ flutter clean
 
 rm ios/Podfile.lock
 
-flutter build ios integration_test/custom_integration_test.dart --no-pub
+# flutter build ios integration_test/custom_integration_test.dart --no-pub
+
+flutter build ios --no-pub
 
 # cd ios
 
