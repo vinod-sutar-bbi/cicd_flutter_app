@@ -1,5 +1,7 @@
 flutter clean
 
+rm ios/Podfile.lock
+
 flutter build ios integration_test/custom_integration_test.dart
 
 # cd ios
