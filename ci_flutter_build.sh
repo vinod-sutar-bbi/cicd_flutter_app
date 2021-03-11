@@ -4,6 +4,8 @@
 
 cd ios
 
+pod install
+
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
