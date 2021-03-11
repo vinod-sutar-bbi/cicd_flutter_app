@@ -15,5 +15,5 @@ pushd android
 
 flutter build apk
 ./gradlew app:assembleAndroidTest
-./gradlew app:assembleDebug -Ptarget=integration_test/<name>_test.dart
+./gradlew app:assembleDebug -Ptarget=integration_test/custom_integration_test.dart
 popd
