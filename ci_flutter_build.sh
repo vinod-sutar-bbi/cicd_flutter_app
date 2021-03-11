@@ -1,6 +1,6 @@
 flutter clean
 
-rm ios/Podfile.lock
+# rm ios/Podfile.lock
 
 # flutter build ios integration_test/custom_integration_test.dart --no-pub
 
@@ -17,4 +17,4 @@ pod install --verbose
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
--sdk iphoneos build-for-testing
+-sdk iphoneos build-for-testing -verbose
