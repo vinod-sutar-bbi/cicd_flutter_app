@@ -2,9 +2,7 @@
 
 # flutter build ios integration_test/custom_integration_test.dart
 
-flutter pub get
-
-pod install
+flutter build ios
 
 cd ios
 
