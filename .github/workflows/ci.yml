@@ -38,15 +38,6 @@ jobs:
         run: bash ci_import_cert_profile.sh
       - name: Build APK
         run: bash ci_flutter_build.sh
-      # - name: Run Unit and UI Tests
-      #   run: flutter build ios integration_test/custom_integration_test.dart && cd ios && /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
-
-            
-  set_up_gcloud_sdk:
-    needs: [xcode_build]
-    name: Set up Cloud SDK
-    runs-on: macos-10.15
-    steps:
       - uses: google-github-actions/setup-gcloud@master 
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
@@ -56,3 +47,5 @@ jobs:
         run: gcloud info
       - name: Upload Firebase Test Lab
         run: bash ci_firebase_test_lab.sh
+      # - name: Run Unit and UI Tests
+      #   run: flutter build ios integration_test/custom_integration_test.dart && cd ios && /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
