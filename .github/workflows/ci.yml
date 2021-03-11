@@ -23,18 +23,18 @@ jobs:
 
       
       
-  # set_up_gcloud_sdk:
-  # #   needs: [flutter_test]
-  #   name: Set up Cloud SDK
-  #   runs-on: macos-latest
-  #   steps:
-  #     - uses: google-github-actions/setup-gcloud@master 
-  #       with:
-  #         project_id: ${{ secrets.GCP_PROJECT_ID }}
-  #         service_account_key: ${{ secrets.SERVICE_ACCOUNT }}
-  #         export_default_credentials: true
-  #     - name: Use gcloud CLI
-  #       run: gcloud info
+  set_up_gcloud_sdk:
+  #   needs: [flutter_test]
+    name: Set up Cloud SDK
+    runs-on: macos-latest
+    steps:
+      - uses: google-github-actions/setup-gcloud@master 
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.SERVICE_ACCOUNT }}
+          export_default_credentials: true
+      - name: Use gcloud CLI
+        run: gcloud info
 
   # firebase_test_lab:
   #   needs: [set_up_gcloud_sdk]
@@ -51,6 +51,7 @@ jobs:
   #     - run: bash ci_firebase_test_lab.sh
 
   xcode_build:
+    needs: [set_up_gcloud_sdk]
     name: Run Xcode Build
     runs-on: [macos-latest]
     env:
