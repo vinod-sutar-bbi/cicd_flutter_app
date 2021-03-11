@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.4'
+          flutter-version: '1.22.5'
       - name: Install Certs and Profiles
         run: bash ci_import_cert_profile.sh
       - name: Build APK
