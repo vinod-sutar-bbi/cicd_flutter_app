@@ -2,9 +2,9 @@
 
 # flutter build ios integration_test/custom_integration_test.dart
 
-cd ios
+flutter pub get
 
-pod install
+cd ios
 
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
