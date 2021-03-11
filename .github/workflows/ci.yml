@@ -67,9 +67,9 @@ jobs:
       - name: Build APK
       - run: flutter build apk
       - name: Install Certs and Profiles
-        run: bash ci_import_cert_profile.sh
+      - run: bash ci_import_cert_profile.sh
       - name: Cocoapods check
-        run: gem which cocoapods
+      - run: gem which cocoapods
         
       # - name: Compile app
       #   run: flutter build ios integration_test/custom_integration_test.dart
