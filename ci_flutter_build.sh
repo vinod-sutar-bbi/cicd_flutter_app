@@ -1,10 +1,19 @@
+# flutter clean
+
+# flutter build ios integration_test/custom_integration_test.dart
+
+# cd ios
+
+# xcodebuild -workspace Runner.xcworkspace \
+# -derivedDataPath build \
+# -scheme Runner \
+# -sdk iphoneos build-for-testing
+
 flutter clean
 
-flutter build ios integration_test/custom_integration_test.dart
+pushd android
 
-cd ios
-
-xcodebuild -workspace Runner.xcworkspace \
--derivedDataPath build \
--scheme Runner \
--sdk iphoneos build-for-testing
+flutter build apk
+./gradlew app:assembleAndroidTest
+./gradlew app:assembleDebug -Ptarget=integration_test/<name>_test.dart
+popd
