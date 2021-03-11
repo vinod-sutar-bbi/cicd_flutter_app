@@ -8,8 +8,7 @@ xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
 -sdk iphoneos build-for-testing \
-CODE_SIGN_IDENTITY="Apple Development: BB Developer (QXZZ2XV3GC)" \
-PROVISIONING_PROFILE="45407bcc-382c-4cc0-94c3-2fef0bb2e2c1"
+CODE_SIGN_IDENTITY="Apple Development: BB Developer (QXZZ2XV3GC)" PROVISIONING_PROFILE="45407bcc-382c-4cc0-94c3-2fef0bb2e2c1"
 
 # flutter clean
 
