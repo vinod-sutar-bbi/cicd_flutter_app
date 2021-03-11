@@ -51,7 +51,7 @@ jobs:
   #     - run: bash ci_firebase_test_lab.sh
 
   xcode_build:
-    needs: [set_up_gcloud_sdk]
+    # needs: [set_up_gcloud_sdk]
     name: Run Xcode Build
     runs-on: [macos-latest]
     env:
