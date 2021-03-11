@@ -6,6 +6,8 @@ rm ios/Podfile.lock
 
 flutter pub get
 
+flutter doctor
+
 cd ios
 
 pod install --verbose
@@ -14,7 +16,7 @@ pod install --verbose
 
 # cd ios
 
-xcodebuild -workspace Runner.xcworkspace \
--derivedDataPath build \
--scheme Runner \
--sdk iphoneos build-for-testing -verbose
+# xcodebuild -workspace Runner.xcworkspace \
+# -derivedDataPath build \
+# -scheme Runner \
+# -sdk iphoneos build-for-testing -verbose
