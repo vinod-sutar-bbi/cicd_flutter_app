@@ -65,7 +65,11 @@ jobs:
         with:
           channel: "stable"
       - run: flutter pub get
-      - name: Install Certs and Profiles
-        run: bash ci_import_cert_profile.sh
-      - name: Run Unit and UI Tests
-        run: flutter build ios integration_test/custom_integration_test.dart && cd ios && /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+      - name: Compile app
+        run: flutter build ios integration_test/custom_integration_test.dart
+
+      # - name: Install Certs and Profiles
+      #   run: bash ci_import_cert_profile.sh
+      # - name: Run Unit and UI Tests
+      #   run: flutter build ios integration_test/custom_integration_test.dart && cd ios && /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+      
