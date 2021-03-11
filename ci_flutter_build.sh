@@ -14,7 +14,7 @@ pod install --verbose
 
 # cd ios
 
-# xcodebuild -workspace Runner.xcworkspace \
-# -derivedDataPath build \
-# -scheme Runner \
-# -sdk iphoneos build-for-testing
+xcodebuild -workspace Runner.xcworkspace \
+-derivedDataPath build \
+-scheme Runner \
+-sdk iphoneos build-for-testing
