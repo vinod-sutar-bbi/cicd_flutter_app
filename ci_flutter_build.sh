@@ -2,15 +2,15 @@ flutter clean
 
 rm ios/Podfile.lock
 
-flutter build ios integration_test/custom_integration_test.dart
+# flutter build ios integration_test/custom_integration_test.dart --no-pub
 
-# flutter pub get
+flutter pub get
 
 # flutter doctor
 
 cd ios
 
-# pod install --verbose
+pod install --verbose
 
 # flutter build ios --no-pub integration_test/custom_integration_test.dart
 
@@ -24,3 +24,9 @@ xcodebuild -workspace Runner.xcworkspace \
 # CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
 
 ls build/Build/Products
+
+# cd build/Build/Products
+
+# xcodebuild test-without-building \
+#     -xctestrun Runner_iphoneos14.2-arm64-armv7.xctestrun \
+#     -destination id=00008020-000369C03A21002E
