@@ -6,7 +6,7 @@ rm ios/Podfile.lock
 
 flutter pub get
 
-# flutter doctor
+flutter doctor
 
 cd ios
 
@@ -19,14 +19,6 @@ pod install --verbose
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
--sdk iphoneos build-for-testing 
-
-# CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
+-sdk iphoneos build-for-testing CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
 
 ls build/Build/Products
-
-# cd build/Build/Products
-
-# xcodebuild test-without-building \
-#     -xctestrun Runner_iphoneos14.2-arm64-armv7.xctestrun \
-#     -destination id=00008020-000369C03A21002E
