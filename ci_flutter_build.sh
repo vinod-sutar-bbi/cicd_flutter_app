@@ -1,16 +1,16 @@
 flutter clean
 
-rm ios/Podfile.lock
+# rm ios/Podfile.lock
 
-# flutter build ios integration_test/custom_integration_test.dart --no-pub
+flutter build ios integration_test/custom_integration_test.dart --no-codesign
 
-flutter pub get
+# flutter pub get
 
-flutter doctor
+# flutter doctor
 
 cd ios
 
-pod install --verbose
+# pod install --verbose
 
 # flutter build ios --no-pub integration_test/custom_integration_test.dart
 
@@ -19,6 +19,8 @@ pod install --verbose
 xcodebuild -workspace Runner.xcworkspace \
 -derivedDataPath build \
 -scheme Runner \
--sdk iphoneos build-for-testing CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
+-sdk iphoneos build-for-testing 
+
+# CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
 
 ls build/Build/Products
