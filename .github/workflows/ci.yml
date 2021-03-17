@@ -34,15 +34,15 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.22.4'
-      - name: Install Certs and Profiles
-        run: bash ci_import_cert_profile.sh
-      - name: Build APK
-        run: bash ci_flutter_build.sh
       - uses: google-github-actions/setup-gcloud@master 
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.SERVICE_ACCOUNT }}
           export_default_credentials: true
+      - name: Install Certs and Profiles
+        run: bash ci_import_cert_profile.sh
+      - name: Build APK
+        run: bash ci_flutter_build.sh
       - name: Use gcloud CLI
         run: gcloud info
       - name: Upload Firebase Test Lab
