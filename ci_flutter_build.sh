@@ -2,7 +2,7 @@ flutter clean
 
 # rm ios/Podfile.lock
 
-flutter build ios integration_test/custom_integration_test.dart --no-codesign
+flutter build ios integration_test/custom_integration_test.dart
 
 # flutter pub get
 
