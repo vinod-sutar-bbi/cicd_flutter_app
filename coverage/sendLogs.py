@@ -170,7 +170,10 @@ def getTestInformation(data):
     # for i in content:
     #     finalContent.append(getCorrectSting(i))
     finalResult = content[-1]
+    print(finalResult)
     if "All tests passed" in finalResult:
+        return finalResult.split("+")[1].split(":")[0]
+    elif "failed" in finalResult:
         return finalResult.split("+")[1].split(":")[0]
     return "0"
 
@@ -195,16 +198,38 @@ if __name__ == "__main__":
     linesPer, fPer = getCoveragePercent(data)
     testsResult = getTestInformation("../artifacts/testReport.txt")
     testData = {}
-    for i in range(int(testsResult)):
-        testData[f"{i}"] = {
-            "passedValue": 1,
-            "failed": 0,
-            "Module name": "-",
-            "Test name": "-",
-            "TestId": "-#-#-#1.1.0",
-            "Passed": True,
-            "total": 1,
-        }
+    if " " in testsResult:
+        for i in range(int(testsResult.split(" ")[0])):
+            testData[f"{i}"] = {
+                "passedValue": 1,
+                "failed": 0,
+                "Module name": "-",
+                "Test name": "-",
+                "TestId": "-#-#-#1.1.0",
+                "Passed": True,
+                "total": 1,
+            }
+        for i in range(int(testsResult.split("-")[1])):
+            testData[f"{i}"] = {
+                "passedValue": 0,
+                "failed": 1,
+                "Module name": "-",
+                "Test name": "-",
+                "TestId": "-#-#-#1.1.0",
+                "Passed": False,
+                "total": 1,
+            }
+    else:
+        for i in range(int(testsResult)):
+            testData[f"{i}"] = {
+                "passedValue": 1,
+                "failed": 0,
+                "Module name": "-",
+                "Test name": "-",
+                "TestId": "-#-#-#1.1.0",
+                "Passed": True,
+                "total": 1,
+            }
     tempStruct["codeInfo"]["code_reports"]["code_coverage"] = fPer * 100
     tempStruct["testInfo"]["information"] = testData
     sendLogsToServer(json.dumps(tempStruct))
