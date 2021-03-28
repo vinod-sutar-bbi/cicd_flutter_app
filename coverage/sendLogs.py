@@ -2,22 +2,24 @@ import os
 import json
 from datetime import date
 from typing import final
+import http.client as http
+import urllib.parse
 
-APP_NAME = "Flutter App"
+APP_NAME = "Flutter_App"
 APP_VERSION = "1.2.0"
 tempStruct = {
     "testInfo": {
-        "information": {}
+        "information": []
     },
     "projInfo": {
-        "date": date.today().strftime("%d/%m/%Y"),
+        "date": str(date.today()),
         "ModuleName": APP_NAME,
         "version": APP_VERSION,
     },
     "codeInfo": {
         "code_reports": {
             "code_coverage": 14.757912108387233,
-            "staticCodeAnalysisIssues": "-",
+            "staticCodeAnalysisIssues": 0,
             "code_complexity": "NA",
         }
     },
@@ -163,34 +165,57 @@ def getCoveragePercent(data):
     return hit / lines, fhits / functions
 
 
+def getName(value):
+    temp = value.split("::")[1]
+    name = temp.split("]")[0]
+    return name.replace("[", "")
+
+
 def getTestInformation(data):
     finalContent = []
-    with open(data, encoding="utf-16le") as f:
+    with open(data, encoding="utf-8") as f:
         content = f.readlines()
     # for i in content:
     #     finalContent.append(getCorrectSting(i))
     finalResult = content[-1]
     print(finalResult)
-    if "All tests passed" in finalResult:
-        return finalResult.split("+")[1].split(":")[0]
-    elif "failed" in finalResult:
-        return finalResult.split("+")[1].split(":")[0]
-    return "0"
-
-
-def getCorrectSting(string, count=0):
-    try:
-        newString = string.encode("latin-1",
-                                  "ignore").decode("utf-8", "ignore")
-    except:
-        if count != 0:
-            pass
-        return string
-    return newString
+    count = 0
+    for i in content:
+        data = {
+            "passedValue": 1,
+            "failed": 0,
+            "Module name": "-",
+            "Test name": "-",
+            "TestId": f"-#-#-#1.{count}.0",
+            "Passed": True,
+            "total": 1,
+        }
+        if "[Test]" in i and ".dart" in i:
+            count += 1
+            data["Test name"] = getName(i)
+            if "[E]" in i:
+                data["passedValue"] = 0
+                data["failed"] = 1
+                data["Passed"] = False
+            finalContent.append(data)
+    return finalContent
 
 
 def sendLogsToServer(value):
-    pass
+    URL = "https://cpms.bbinfotech.com/flutter_cicd_results /controller/controller.readJsonData.php"
+    params = urllib.parse.urlencode({'testCaseReport':
+                                     value})  # adding data yo URL
+    headers = {
+        "Content-type": "application/x-www-form-urlencoded",
+        "Accept": "text/plain"
+    }
+    conn = http.HTTPSConnection("cpms.bbinfotech.com")  # connection to URL
+    conn.request(
+        "POST", "/flutter_cicd_results/controller/controller.readJsonData.php",
+        params, headers)  # connection formed and data sent
+    response = conn.getresponse()  # collecting response.
+    print(response.read())
+    print(response.status, response.reason)
 
 
 if __name__ == "__main__":
@@ -198,39 +223,39 @@ if __name__ == "__main__":
     linesPer, fPer = getCoveragePercent(data)
     testsResult = getTestInformation("../artifacts/testReport.txt")
     testData = {}
-    if " " in testsResult:
-        for i in range(int(testsResult.split(" ")[0])):
-            testData[f"{i}"] = {
-                "passedValue": 1,
-                "failed": 0,
-                "Module name": "-",
-                "Test name": "-",
-                "TestId": "-#-#-#1.1.0",
-                "Passed": True,
-                "total": 1,
-            }
-        for i in range(int(testsResult.split("-")[1])):
-            testData[f"{i}"] = {
-                "passedValue": 0,
-                "failed": 1,
-                "Module name": "-",
-                "Test name": "-",
-                "TestId": "-#-#-#1.1.0",
-                "Passed": False,
-                "total": 1,
-            }
-    else:
-        for i in range(int(testsResult)):
-            testData[f"{i}"] = {
-                "passedValue": 1,
-                "failed": 0,
-                "Module name": "-",
-                "Test name": "-",
-                "TestId": "-#-#-#1.1.0",
-                "Passed": True,
-                "total": 1,
-            }
+    # if " " in testsResult:
+    #     for i in range(int(testsResult.split(" ")[0])):
+    #         testData[f"{i}"] = {
+    #             "passedValue": 1,
+    #             "failed": 0,
+    #             "Module name": "-",
+    #             "Test name": "-",
+    #             "TestId": f"-#-#-#1.{i}.0",
+    #             "Passed": True,
+    #             "total": 1,
+    #         }
+    #     for i in range(int(testsResult.split("-")[1])):
+    #         testData[f"_{i}"] = {
+    #             "passedValue": 0,
+    #             "failed": 1,
+    #             "Module name": "-",
+    #             "Test name": "-",
+    #             "TestId": f"-#-#-#1.1.{i}",
+    #             "Passed": False,
+    #             "total": 1,
+    #         }
+    # else:
+    #     for i in range(int(testsResult)):
+    # testData[f"{i}"] = {
+    #     "passedValue": 1,
+    #     "failed": 0,
+    #     "Module name": "-",
+    #     "Test name": "-",
+    #     "TestId": f"-#-#-#1.{i}.0",
+    #     "Passed": True,
+    #     "total": 1,
+    # }
     tempStruct["codeInfo"]["code_reports"]["code_coverage"] = fPer * 100
-    tempStruct["testInfo"]["information"] = testData
+    tempStruct["testInfo"]["information"] = testsResult
+    print(len(testsResult))
     sendLogsToServer(json.dumps(tempStruct))
-    print(tempStruct)

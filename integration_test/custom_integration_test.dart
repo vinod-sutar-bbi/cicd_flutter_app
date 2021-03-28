@@ -5,15 +5,18 @@ import 'package:flutter/material.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('failing test example', (WidgetTester tester) async {
+  testWidgets('[Test::WidgetTester] failing test example',
+      (WidgetTester tester) async {
     expect(2 + 2, isNot(equals(5)));
   });
 
-  testWidgets('passing test example', (WidgetTester tester) async {
+  testWidgets('[Test::WidgetTester] passing test example',
+      (WidgetTester tester) async {
     expect(2 + 2, equals(4));
   });
 
-  testWidgets('MyWidget has a title and message', (WidgetTester tester) async {
+  testWidgets('[Test::MyWidget] MyWidget has a title and message',
+      (WidgetTester tester) async {
     // Create the widget by telling the tester to build it.
     await tester.pumpWidget(MyWidget(title: 'T', message: 'M'));
 
@@ -27,7 +30,6 @@ void main() {
     expect(messageFinder, findsOneWidget);
   });
 }
-
 
 class MyWidget extends StatelessWidget {
   final String title;
