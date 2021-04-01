@@ -5,13 +5,13 @@ void main() {
   // Define a test. The TestWidgets function also provides a WidgetTester
   // to work with. The WidgetTester allows building and interacting
   // with widgets in the test environment.
-  testWidgets('[Test]::[MyWidget] MyWidget has a title and message',
+  testWidgets('[name::Mywidget][desc::value should start at 0]',
       (WidgetTester tester) async {
     // Create the widget by telling the tester to build it.
     await tester.pumpWidget(MyWidget(title: 'T', message: 'M'));
 
     // Create the Finders.
-    final titleFinder = find.text('Ts');
+    final titleFinder = find.text('T');
     final messageFinder = find.text('M');
 
     // Use the `findsOneWidget` matcher provided by flutter_test to

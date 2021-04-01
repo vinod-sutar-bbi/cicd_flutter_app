@@ -173,32 +173,75 @@ def getName(value):
 
 def getTestInformation(data):
     finalContent = []
-    with open(data, encoding="utf-8") as f:
+    with open(data, encoding="utf-16") as f:
         content = f.readlines()
-    # for i in content:
-    #     finalContent.append(getCorrectSting(i))
-    finalResult = content[-1]
-    print(finalResult)
-    count = 0
+    #json reading and then sending for better logs.
     for i in content:
         data = {
             "passedValue": 1,
             "failed": 0,
             "Module name": "-",
             "Test name": "-",
-            "TestId": f"-#-#-#1.{count}.0",
+            "TestId": "",
             "Passed": True,
             "total": 1,
         }
-        if "[Test]" in i and ".dart" in i:
-            count += 1
-            data["Test name"] = getName(i)
-            if "[E]" in i:
-                data["passedValue"] = 0
-                data["failed"] = 1
-                data["Passed"] = False
-            finalContent.append(data)
+        temp = json.loads(i)
+        if ("suite" in temp["type"]):
+            pass  # do the coding here if the file exists
+        elif "testStart" in temp["type"]:
+            if "loading" not in temp["test"]["name"]:
+                name = temp["test"]["name"]
+                data["id"] = temp["test"]["id"]
+                if "module::" in name:
+                    data["Module name"] = name.split("module::")[1].split(
+                        "]")[0]
+                if "name::" in name:
+                    data["Test name"] = name.split("name::")[1].split("]")[0]
+                data["TestId"] = data["Module name"] + "-" + data["Test name"]
+                finalContent.append(data)
+        elif "testDone" in temp["type"]:
+            local = None
+            for i in finalContent:
+                if i["id"] == temp["testID"]:
+                    local = i
+                    if "error" not in temp["result"] and local is not None:
+                        local["passedValue"] = 1
+                        local["Passed"] = True
+                        local["failed"] = 0
+                    else:
+                        local["passedValue"] = 0
+                        local["Passed"] = False
+                        local["failed"] = 1
+                    break
+    print("-------------------------")
+    print(finalContent)
     return finalContent
+
+    # for i in content:
+    #     finalContent.append(getCorrectSting(i))
+    # finalResult = content[-1]
+    # print(finalResult)
+    # count = 0
+    # for i in content:
+    #     data = {
+    #         "passedValue": 1,
+    #         "failed": 0,
+    #         "Module name": "-",
+    #         "Test name": "-",
+    #         "TestId": f"-#-#-#1.{count}.0",
+    #         "Passed": True,
+    #         "total": 1,
+    #     }
+    #     if "[Test]" in i and ".dart" in i:
+    #         count += 1
+    #         data["Test name"] = getName(i)
+    #         if "[E]" in i:
+    #             data["passedValue"] = 0
+    #             data["failed"] = 1
+    #             data["Passed"] = False
+    #         finalContent.append(data)
+    # return finalContent
 
 
 def sendLogsToServer(value):
@@ -219,43 +262,11 @@ def sendLogsToServer(value):
 
 
 if __name__ == "__main__":
-    data = walkFile(fileReader("lcov.info"))
+    data = walkFile(fileReader("./coverage/lcov.info"))
     linesPer, fPer = getCoveragePercent(data)
-    testsResult = getTestInformation("../artifacts/testReport.txt")
+    testsResult = getTestInformation("./artifacts/testReport.log")
     testData = {}
-    # if " " in testsResult:
-    #     for i in range(int(testsResult.split(" ")[0])):
-    #         testData[f"{i}"] = {
-    #             "passedValue": 1,
-    #             "failed": 0,
-    #             "Module name": "-",
-    #             "Test name": "-",
-    #             "TestId": f"-#-#-#1.{i}.0",
-    #             "Passed": True,
-    #             "total": 1,
-    #         }
-    #     for i in range(int(testsResult.split("-")[1])):
-    #         testData[f"_{i}"] = {
-    #             "passedValue": 0,
-    #             "failed": 1,
-    #             "Module name": "-",
-    #             "Test name": "-",
-    #             "TestId": f"-#-#-#1.1.{i}",
-    #             "Passed": False,
-    #             "total": 1,
-    #         }
-    # else:
-    #     for i in range(int(testsResult)):
-    # testData[f"{i}"] = {
-    #     "passedValue": 1,
-    #     "failed": 0,
-    #     "Module name": "-",
-    #     "Test name": "-",
-    #     "TestId": f"-#-#-#1.{i}.0",
-    #     "Passed": True,
-    #     "total": 1,
-    # }
     tempStruct["codeInfo"]["code_reports"]["code_coverage"] = fPer * 100
     tempStruct["testInfo"]["information"] = testsResult
-    print(len(testsResult))
-    sendLogsToServer(json.dumps(tempStruct))
+    print(testsResult)
+    # sendLogsToServer(json.dumps(tempStruct))
