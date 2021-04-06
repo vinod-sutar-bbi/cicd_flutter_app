@@ -25,29 +25,39 @@ jobs:
 
 
 
-  xcode_build:
-    # needs: [set_up_gcloud_sdk]
-    name: Run Xcode Build
-    runs-on: macos-10.15
+  # xcode_build:
+  #   # needs: [set_up_gcloud_sdk]
+  #   name: Run Xcode Build
+  #   runs-on: macos-10.15
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '1.22.4'
+  #     - uses: google-github-actions/setup-gcloud@master 
+  #       with:
+  #         project_id: ${{ secrets.GCP_PROJECT_ID }}
+  #         service_account_key: ${{ secrets.GCP_SA_KEY }}
+  #         export_default_credentials: true
+  #     - name: Install Certs and Profiles
+  #       run: gcloud components update
+  #     - name: Install Certs and Profiles
+  #       run: bash ci_import_cert_profile.sh
+  #     - name: Build APK
+  #       run: bash ci_flutter_build.sh
+  #     - name: Use gcloud CLI
+  #       run: gcloud info
+  #     - name: Upload Firebase Test Lab
+  #       run: bash ci_firebase_test_lab.sh
+  #     - name: Run Unit and UI Tests
+  #       run: flutter build ios integration_test/custom_integration_test.dart && cd ios && /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+
+
+
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
-        with:
-          flutter-version: '1.22.4'
-      - uses: google-github-actions/setup-gcloud@master 
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
-      - name: Install Certs and Profiles
-        run: gcloud components update
-      - name: Install Certs and Profiles
-        run: bash ci_import_cert_profile.sh
-      - name: Build APK
-        run: bash ci_flutter_build.sh
-      - name: Use gcloud CLI
-        run: gcloud info
-      - name: Upload Firebase Test Lab
-        run: bash ci_firebase_test_lab.sh
-      - name: Run Unit and UI Tests
-        run: flutter build ios integration_test/custom_integration_test.dart && cd ios && /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Build the app
+        run: ./gradlew build
