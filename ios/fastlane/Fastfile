@@ -19,7 +19,7 @@ platform :ios do
   desc "Description of what the lane does"
   lane :beta do
 
-    sh('cd .. && cd .. && bash test_coverage.sh')
+    # sh('cd .. && cd .. && bash test_coverage.sh')
     
     # get_certificates           # invokes cert
     # get_provisioning_profile 

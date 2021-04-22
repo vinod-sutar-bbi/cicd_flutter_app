@@ -1,0 +1,252 @@
+{
+  "testInfo": {
+    "information": {
+      "Patient_UIsaveTool": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "UIsaveTool",
+        "TestId": "Patient#UIsaveTool#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_deleteAutoSavedToolOfPatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "deleteAutoSavedToolOfPatient",
+        "TestId": "Tool#deleteAutoSavedToolOfPatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_saveResultWithToolID": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "saveResultWithToolID",
+        "TestId": "Tool#saveResultWithToolID#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "UserAccount_UIloginWithWrongPINForLastAttempt": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "UserAccount",
+        "Test name": "UIloginWithWrongPINForLastAttempt",
+        "TestId": "UserAccount#UIloginWithWrongPINForLastAttempt#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_getAutoSavedToolResultOfPatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "getAutoSavedToolResultOfPatient",
+        "TestId": "Tool#getAutoSavedToolResultOfPatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_getMEPatientWithBBId": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "getMEPatientWithBBId",
+        "TestId": "Patient#getMEPatientWithBBId#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "UserAccount_UIconfigureAppAndLoginWithInvalidUsernameAndPassword": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "UserAccount",
+        "Test name": "UIconfigureAppAndLoginWithInvalidUsernameAndPassword",
+        "TestId": "UserAccount#UIconfigureAppAndLoginWithInvalidUsernameAndPassword#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "UserAccount_UIconfigureAppAndLoginWithValidUsernameAndValidPassword": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "UserAccount",
+        "Test name": "UIconfigureAppAndLoginWithValidUsernameAndValidPassword",
+        "TestId": "UserAccount#UIconfigureAppAndLoginWithValidUsernameAndValidPassword#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_getAllAutoSavedToolsOfPatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "getAllAutoSavedToolsOfPatient",
+        "TestId": "Tool#getAllAutoSavedToolsOfPatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_getAllPatients": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "getAllPatients",
+        "TestId": "Patient#getAllPatients#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_UIcreatePatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "UIcreatePatient",
+        "TestId": "Patient#UIcreatePatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_isToolConnectedForPatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "isToolConnectedForPatient",
+        "TestId": "Tool#isToolConnectedForPatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "UserAccount_UIloginWithPIN": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "UserAccount",
+        "Test name": "UIloginWithPIN",
+        "TestId": "UserAccount#UIloginWithPIN#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_testFullName": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "testFullName",
+        "TestId": "Patient#testFullName#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_getResultWithToolID": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "getResultWithToolID",
+        "TestId": "Tool#getResultWithToolID#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_updatePatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "updatePatient",
+        "TestId": "Patient#updatePatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "UserAccount_UIloginWithWrongPIN": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "UserAccount",
+        "Test name": "UIloginWithWrongPIN",
+        "TestId": "UserAccount#UIloginWithWrongPIN#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_connectToolForPatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "connectToolForPatient",
+        "TestId": "Tool#connectToolForPatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_UIopenInfoVideo": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "UIopenInfoVideo",
+        "TestId": "Tool#UIopenInfoVideo#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_addDemoPatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "addDemoPatient",
+        "TestId": "Patient#addDemoPatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_getMEToolWithBBToolId": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "getMEToolWithBBToolId",
+        "TestId": "Tool#getMEToolWithBBToolId#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_UIconnectTool": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "UIconnectTool",
+        "TestId": "Patient#UIconnectTool#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_UIopenInfoText": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "UIopenInfoText",
+        "TestId": "Tool#UIopenInfoText#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_updateTool": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "updateTool",
+        "TestId": "Tool#updateTool#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Patient_getAllPatientsExists": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Patient",
+        "Test name": "getAllPatientsExists",
+        "TestId": "Patient#getAllPatientsExists#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      },
+      "Tool_getConnectedToolsOfPatient": {
+        "passedValue": 1,
+        "failed": 0,
+        "Module name": "Tool",
+        "Test name": "getConnectedToolsOfPatient",
+        "TestId": "Tool#getConnectedToolsOfPatient#POC_App#1.1.0",
+        "Passed": true,
+        "total": 1
+      }
+    }
+  },
+  "projInfo": {
+    "date": "2020-05-20",
+    "ModuleName": "POC_App",
+    "version": "1.1.0"
+  },
+  "codeInfo": {
+    "code_reports": {
+      "code_coverage": 14.757912108387233,
+      "staticCodeAnalysisIssues": "46",
+      "code_complexity": "NA"
+    }
+  }
+}

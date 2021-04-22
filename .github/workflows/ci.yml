@@ -5,23 +5,104 @@ on:
       - master
 
 jobs:
-
-  install_flutter:
-    name: Install flutter
-      - uses: steebchen/flutter@v1.1.0
-      - run: flutter pub get
-
   flutter_test:
     name: Run flutter test and analyze
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
-        with:
-          java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
       - run: flutter pub get
+      - run: brew install lcov
       - run: flutter analyze lib
-      - run: flutter pub global run dart_code_metrics:metrics lib --reporter=json
-      - run: flutter test --coverage
+      - run: flutter test
+      - run: flutter pub global activate dart_code_metrics
+      - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
+      - run: bash test_coverage.sh
+
+      
+
+
+
+  # xcode_build:
+  #   # needs: [set_up_gcloud_sdk]
+  #   name: Run Xcode Build
+  #   runs-on: macos-10.15
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '1.22.4'
+  #     - uses: google-github-actions/setup-gcloud@master 
+  #       with:
+  #         project_id: ${{ secrets.GCP_PROJECT_ID }}
+  #         service_account_key: ${{ secrets.GCP_SA_KEY }}
+  #         export_default_credentials: true
+  #     - name: Install Certs and Profiles
+  #       run: gcloud components update
+  #     - name: Install Certs and Profiles
+  #       run: bash ci_import_cert_profile.sh
+  #     - name: Build APK
+  #       run: bash ci_flutter_build.sh
+  #     - name: Use gcloud CLI
+  #       run: gcloud info
+  #     - name: Upload Firebase Test Lab
+  #       run: bash ci_firebase_test_lab.sh
+  #     - name: Run Unit and UI Tests
+  #       run: flutter build ios integration_test/custom_integration_test.dart && cd ios && /usr/bin/xcodebuild test -workspace "$XC_WORKSPACE" -scheme "$XC_SCHEME" -destination 'platform=iOS Simulator,name=iPhone 11'
+
+
+
+  # build:
+  #   name: Generate APK
+  #   runs-on: ubuntu-18.04
+
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '1.22.4'
+  #     - name: set up JDK 1.8
+  #       uses: actions/setup-java@v1
+  #       with:
+  #         java-version: 1.8
+  #     - name: Generate APK
+  #       run: flutter build apk --split-per-abi
+  #     - name: Upload APK
+  #       uses: actions/upload-artifact@v1
+  #       with:
+  #         name: app
+  #         path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+
+  # build:
+
+  #   name: Run flutter test and analyze
+    
+  #   runs-on: macos-latest
+    
+  #   steps:
+
+  #     - uses: actions/checkout@v1
+  #     - name: Save Profile
+  #       run:  bash ci_import_cert_profile.sh
+  #     - name: Install python and codemagic tools
+  #       uses: actions/setup-python@v2
+  #       with:
+  #         python-version: 3.7
+  #     - name: Install python dependencies
+  #       run:  python -m pip install codemagic-cli-tools
+  #     - name: Initialize Keychain with certificate
+  #       run: |
+  #         keychain initialize
+  #         keychain add-certificates --certificate ios/apple_developement_certificate.p12 --certificate-password bbii
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '1.22.4'
+  #     - run: flutter pub get
+  #     - name: Building IPA
+  #       run: |
+  #         xcode-project use-profiles
+  #         flutter build ios --release --no-codesign
+  #         xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner --config Release
+

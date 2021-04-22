@@ -5,12 +5,7 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000301">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="1: cd .. &amp;&amp; cd .. &amp;&amp; bash test_coverage.sh" time="11.663796">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000316">
         
       </testcase>
     
