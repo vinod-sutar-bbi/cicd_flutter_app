@@ -5,21 +5,21 @@ on:
       - master
 
 jobs:
-  # flutter_test:
-  #   name: Run flutter test and analyze
-  #   runs-on: macos-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: subosito/flutter-action@v1
-  #       with:
-  #         channel: "stable"
-  #     - run: flutter pub get
-  #     - run: brew install lcov
-  #     - run: flutter analyze lib
-  #     - run: flutter test
-  #     - run: flutter pub global activate dart_code_metrics
-  #     - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
-  #     - run: bash test_coverage.sh
+  flutter_test:
+    name: Run flutter test and analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: brew install lcov
+      - run: flutter analyze lib
+      - run: flutter test
+      - run: flutter pub global activate dart_code_metrics
+      - run: flutter pub global run dart_code_metrics:metrics lib --reporter=html
+      - run: bash test_coverage.sh
 
       
 
@@ -75,34 +75,34 @@ jobs:
   #         name: app
   #         path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
 
-  build:
+  # build:
 
-    name: Run flutter test and analyze
+  #   name: Run flutter test and analyze
     
-    runs-on: macos-latest
+  #   runs-on: macos-latest
     
-    steps:
+  #   steps:
 
-      - uses: actions/checkout@v1
-      - name: Save Profile
-        run:  bash ci_import_cert_profile.sh
-      - name: Install python and codemagic tools
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.7
-      - name: Install python dependencies
-        run:  python -m pip install codemagic-cli-tools
-      - name: Initialize Keychain with certificate
-        run: |
-          keychain initialize
-          keychain add-certificates --certificate ios/apple_developement_certificate.p12 --certificate-password bbii
-      - uses: subosito/flutter-action@v1
-        with:
-          flutter-version: '1.22.4'
-      - run: flutter pub get
-      - name: Building IPA
-        run: |
-          xcode-project use-profiles
-          flutter build ios --release --no-codesign
-          xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner --config Release
+  #     - uses: actions/checkout@v1
+  #     - name: Save Profile
+  #       run:  bash ci_import_cert_profile.sh
+  #     - name: Install python and codemagic tools
+  #       uses: actions/setup-python@v2
+  #       with:
+  #         python-version: 3.7
+  #     - name: Install python dependencies
+  #       run:  python -m pip install codemagic-cli-tools
+  #     - name: Initialize Keychain with certificate
+  #       run: |
+  #         keychain initialize
+  #         keychain add-certificates --certificate ios/apple_developement_certificate.p12 --certificate-password bbii
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         flutter-version: '1.22.4'
+  #     - run: flutter pub get
+  #     - name: Building IPA
+  #       run: |
+  #         xcode-project use-profiles
+  #         flutter build ios --release --no-codesign
+  #         xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner --config Release
 
